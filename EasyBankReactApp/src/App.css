@@ -1,0 +1,78 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+    
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dateSelect {
+    margin-right: 10px;
+}
+
+.selectBox {
+    background-color: bisque;
+    display: flex;
+    width: 400px;
+    align-items: stretch;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+
+    position: absolute;
+    left: calc((100% - 400px) / 2);
+    top: 3%;
+}
+
+input {
+    background-color: #92a3b4;
+    display: flex;
+    padding: 5px;
+    font-family: "Roboto Mono", monospace;
+    color: #ffffff;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+}
+
+button {
+    background-color: #92a3b4;
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+    padding: 10px;
+    font-family: "Roboto Mono", monospace;
+    color: #ffffff;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    width: 50px;
+    cursor: pointer;
+}
+
+body {
+    background-color: #dee2e2;
+}
+
+.charts {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 30%;
+}
+
+.chart {
+    width: 1000px;
+} 
+
+::-webkit-calendar-picker-indicator {
+    background-color: #ffffff;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+}

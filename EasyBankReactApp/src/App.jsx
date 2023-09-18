@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
-import './App.css' 
-import axios from "axios";
+import { useState } from "react";
+import "./App.css";
+import MainSelectBox from "./Components/MainSelectBox";
+import Charts from "./Components/Charts";
 
 function App() {
   const req = {
@@ -9,33 +10,88 @@ function App() {
     endDate: "2023-09-19",
   };
 
-  const [startDate, setStartDate] = useState("2023-01-01");
-  const [endDate, setEndDate] = useState("2023-01-01");
+  const customerData = {
+    labels: [
+      // "CreateCustomer",
+      // "UpdateCustomer",
+      // "ReadCustomer",
+      // "DeleteCustomer",
+    ],
+    datasets: [
+      {
+        label: "Customer Data",
+        data: [1, 1, 10, 1],
+        backgroundColor: [
+          "rgba(255, 99, 132, 0.5)",
+          "rgba(54, 162, 235, 0.5)",
+          "rgba(255, 206, 86, 0.5)",
+          "rgba(75, 192, 192, 0.5)",
+        ],
+      },
+    ],
+  };
 
- useEffect(() => {
-  console.log(startDate);
-  console.log(endDate);
-  
-  req.startDate = startDate;
-  req.endDate = endDate;
-   axios
-     .post("https://localhost:7042/api/report", req)
-     .then((response) => {
-       console.log(response.data.data);
-     })
-     .catch((error) => {
-       console.log(error);
-     });
- }, [startDate, endDate]);
+  const customerOptions = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: "top",
+      },
+      title: {
+        display: true,
+        text: "Customer Operations",
+      },
+    },
+  };
+
+  const cardData = {
+    labels: [
+      "CreateCard",
+      "UpdateCard",
+      "ReadCard",
+      "DeleteCard",
+      "UnBlockCard",
+      "BlockCard",
+    ],
+    datasets: [
+      {
+        label: "Card Options",
+        data: [1, 1, 3, 1, 1, 1],
+        backgroundColor: [
+          "rgba(255, 99, 132, 0.5)",
+          "rgba(54, 162, 235, 0.5)",
+          "rgba(255, 206, 86, 0.5)",
+          "rgba(75, 192, 192, 0.5)",
+          "rgba(153, 102, 255, 0.5)",
+          "rgba(255, 159, 64, 0.5)",
+        ],
+      },
+    ],
+  };
+
+  const cardOptions = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: "top",
+      },
+      title: {
+        display: true,
+        text: "Card Options",
+      },
+    },
+  };
 
   return (
-    <div className=''>
-      <h3>Start data</h3>
-      <input type="date" onChange={(e) => setStartDate(e.target.value)} />
-      <h3>End data</h3>
-      <input type="date" onChange={(e) => setEndDate(e.target.value)} />
+    <div>
+      <MainSelectBox req={req} customerData={customerData} />
+
+      <div className="charts">
+        <Charts data={customerData} options={customerOptions} />
+        <Charts data={cardData} options={cardOptions} />
+      </div>
     </div>
   );
 }
 
-export default App
+export default App;
